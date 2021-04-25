@@ -6,7 +6,6 @@ class Counter extends Component {
     imageUrl: "https://picsum.photos/200",
     tags: ["tag1", "tag2", "tag3", "tag4"],
   };
-
   // COMMENT: you use constructor() and super() to be enssure you can appropriately extend off Component and bind functions
   // constructor() {
   //   super();
@@ -20,8 +19,14 @@ class Counter extends Component {
 
   // ALTNERATIVELY - INSTEAD of Consturctor/Super/Bind -- You can use the below approach for functions/methods for components
   // you can use arrow es6 functions to avoid the binding issue -- arrow functions inherit the "this" - they don't rebind it
-  handleIncrement = () => {
-    alert("Sup ph'magh-gyt");
+  handleIncrement = (product) => {
+    //    console.log("Count was >", this.state.count);
+    this.setState({ count: this.state.count + 1 });
+    console.log("count >", product);
+    //    console.log("Now count is >", this.state.count);
+    // setTimeout(() => {
+    //   console.log("Now count is >", this.state.count);
+    // }, 0);
   };
 
   render() {
@@ -29,7 +34,7 @@ class Counter extends Component {
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.handleIncrement(product)}
           className="btn btn-secondary btn-sm"
         >
           Increment
